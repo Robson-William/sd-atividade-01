@@ -19,7 +19,7 @@ rl.question('Qual o seu nome? ', (nome) => {
         sendMessage()
     });
 
-    socket.emit('chat', (msg) => {
+    socket.on('chat', (msg) => {
         console.log(msg)
     })
 
