@@ -9,7 +9,9 @@ rl.question('Qual o seu nome? ', (nome) => {
 
     const sendMessage = () => {
         rl.question('> ', (msg) => {
-            socket.emit('chat', `${nome}: ${msg}`)
+            const data = new Date();
+            const horaFormatada = data.getHours() + ":" + data.getMinutes() + ":" + data.getSeconds();
+            socket.emit('chat', `[${horaFormatada}] [${nome}]: ${msg}`)
             sendMessage()
         })
     }
