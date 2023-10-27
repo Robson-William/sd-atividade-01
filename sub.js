@@ -5,10 +5,10 @@ const server = http.createServer();
 const io = new Server(server);
 
 io.on('connection', (socket)=> {
-    console.log("um usuario conectou");
+    console.log('Um usuário se conectou!');
 
     socket.on('disconnect', ()=> {
-        console.log('user disconnected');
+        console.log('Um usuário se desconectou!');
     })
 
     socket.on('chat', (msg) =>{

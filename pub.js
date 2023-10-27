@@ -8,16 +8,17 @@ rl.question('Qual o seu nome? ', (nome) => {
     let socket = io(ENDPOINT)
 
     const sendMessage = () => {
-        rl.question('> ', (msg) => {
+        rl.question('', (msg) => {
             const data = new Date();
             const horaFormatada = data.getHours() + ":" + data.getMinutes() + ":" + data.getSeconds();
+
             socket.emit('chat', `[${horaFormatada}] [${nome}]: ${msg}`)
             sendMessage();
         })
     }
 
     socket.on('connect', () => {
-        console.log('Conectado ao servidor!');
+        console.log('Conectado ao chat!');
         sendMessage()
     });
 
@@ -26,6 +27,6 @@ rl.question('Qual o seu nome? ', (nome) => {
     })
 
     socket.on('disconnect', () => {
-        console.log('Conexão perdida...')
+        console.log('Desconectado...')
     }); 
 })
